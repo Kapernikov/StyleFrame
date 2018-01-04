@@ -1,10 +1,9 @@
 # coding:utf-8
-from openpyxl.styles import PatternFill, Color, Border, Side, Font, Alignment, Protection
+from openpyxl.styles import NamedStyle, PatternFill, Color, Border, Side, Font, Alignment, Protection
 
 from . import utils
 
-class Style(dict):
-    pass
+styleno = [0]
 
 class Styler(object):
     """
@@ -38,6 +37,8 @@ class Styler(object):
         self.wrap_text = wrap_text
         self.fill_pattern_type = fill_pattern_type
         self.indent = indent
+        styleno[0] = styleno[0] + 1
+        self.name = "style" + styleno[0]
 
     @classmethod
     def default_header_style(cls):
@@ -46,7 +47,7 @@ class Styler(object):
     def create_style(self):
         side = Side(border_style=self.border_type, color=utils.colors.black)
         border = Border(left=side, right=side, top=side, bottom=side)
-        return Style(font=Font(name=self.font, size=self.font_size, color=Color(self.font_color),
+        return NamedStyle(font=Font(name=self.font, size=self.font_size, color=Color(self.font_color),
                                bold=self.bold, underline=self.underline),
                      fill=PatternFill(patternType=self.fill_pattern_type, fgColor=self.bg_color),
                      alignment=Alignment(horizontal=self.horizontal_alignment, vertical=self.vertical_alignment,
