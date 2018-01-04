@@ -1,8 +1,10 @@
 # coding:utf-8
-from openpyxl.styles import PatternFill, Style, Color, Border, Side, Font, Alignment, Protection
+from openpyxl.styles import PatternFill, Color, Border, Side, Font, Alignment, Protection
 
 from . import utils
 
+class Style(dict):
+    pass
 
 class Styler(object):
     """
