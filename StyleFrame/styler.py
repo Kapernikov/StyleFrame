@@ -38,7 +38,7 @@ class Styler(object):
         self.fill_pattern_type = fill_pattern_type
         self.indent = indent
         styleno[0] = styleno[0] + 1
-        self.name = "style" + styleno[0]
+        self.name = "style" + str(styleno[0])
 
     @classmethod
     def default_header_style(cls):
